@@ -31,6 +31,15 @@ def DACmergesort(n, array):
         right_array = DACmergesort(len(array[mid:]),array[mid:])
         return merge(left_array, right_array)
 
-lista =  [2,7,1]
-print(DACmergesort(len(lista),lista))
+prueba1 = []
+prueba2 = [2]
+prueba3 = [6,3]
+prueba4 = [2,6,8,3,4,0,-2,4]
+
+print(DACmergesort(len(prueba1),prueba1))
+print(DACmergesort(len(prueba2),prueba2))
+print(DACmergesort(len(prueba3),prueba3))
+print(DACmergesort(len(prueba4),prueba4))
+
+
 
