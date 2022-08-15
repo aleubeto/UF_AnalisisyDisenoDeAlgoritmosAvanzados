@@ -7,10 +7,10 @@ def merge(left, right):
     i, j = 0, 0
     sorted = []
     while i < len(left) and j < len(right):
-        if left[i] < right[j]:
+        if left[i] > right[j]:
             sorted.append(left[i])
             i += 1
-        else: 
+        else:
             sorted.append(right[j])
             j += 1
 
