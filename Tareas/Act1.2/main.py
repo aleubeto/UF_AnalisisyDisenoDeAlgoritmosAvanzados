@@ -4,23 +4,26 @@
 
 #Implementación de PD y algoritmos avaros para el cambio de monedas
 
-def change_list(n):
-    change = []
-    for i in range(n):
-        change.append(0)
-    return(change)
-
+#Función de cambio con progra dinámica
 def dinamic(n,coins,p,q):
     change = change_list(n)
     
     return change
 
+#Función de cambio con algoritmo aváro
 def greedy(n,coins,p,q):
-    change = change_list(n)
+    change = q - p
     i = n - 1
     while (i>=0):
-        return 0
-    return change
+        if (change >= coins[i]):
+            print(change//coins[i])
+            change = change % coins[i]
+        else:
+            print(0)
+        i -= 1
+        
+        
+
 
 
 
@@ -37,7 +40,7 @@ dinamic(n,coins,p,q)
 greedy(n,coins,p,q)
 
 # Ejecuciones de prueba
-#dinamic(4,[1,2,5,10], 20, 30)
-#greedy(4,[1,2,5,10], 20, 30)
+dinamic(4,[1,2,5,10], 20, 30)
+print(greedy(4,[1,2,5,10], 20, 35))
 
 
