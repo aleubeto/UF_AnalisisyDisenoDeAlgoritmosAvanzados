@@ -41,6 +41,6 @@ greedy(n,coins,p,q)
 
 # Ejecuciones de prueba
 dinamic(4,[1,2,5,10], 20, 30)
-print(greedy(4,[1,2,5,10], 20, 35))
+greedy(4,[1,2,5,10], 20, 35)
 
 
