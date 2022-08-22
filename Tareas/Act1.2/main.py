@@ -13,6 +13,7 @@ def dinamic(n,coins,p,q):
 
 #Función de cambio con algoritmo aváro
 def greedy(n,coins,p,q):
+    coins.sort()
     change = q - p
     i = n - 1
     while (i>=0):
