@@ -1,15 +1,11 @@
-#long hash(string s) {
-#    const int p = 3;
-#    const int m = 1000000009;
-#    long hash = 0;
-#    long pow = 1;
-#    for (for every character c in s) {
-#        hash = (hash + (c - 'a' + 1) * pow) % M;
-#        pow = (pow * p) % M;
-#    }
-#    return hash;
-#}
+# Juan Carlos Ferrer Echeverría A01734794
+# Alejandro Alfonso Ubeto Yañez A01734977
+# Maximiliano Romero Budib      A01732008
+
 #https://iq.opengenus.org/string-hashing/
+
+from operator import and_
+
 
 def hash(s) :
     p = 3
@@ -42,23 +38,29 @@ def hashing(n, inputFile):
         array.append(charlist[:n])
         del charlist[:n]
 
-    #for i in range(len(array)):
-    #    print(len(array[i]),array[i])
     
     #3:Creación de lista con sumas verticales
     col_sum = [hex(sum(i)%256) for i in zip(*array)]
+  
 
     #4:Conversión de elementos a hexadecimal
-
+    hash_message = ""
+    for i in range(len(col_sum)):
+        hash_message += col_sum[i][2:]
+    print(hash_message.upper())
 
 #Programa principal
 def main():
-    n = int(input())
-    inputFile = input('Act2.1/scripts/')
-    inputFile = f'scripts/{inputFile}'
-    hashing(n, inputFile)
+    n = int(input("Introduzca el valor de n: "))
+    if (n%4 == 0) & (16 <= n <= 64):
+        inputFile = input('Act2.1/scripts/')
+        #Introducir el nombre del archivo dentro de la carpeta scripts
+        inputFile = f'scripts/{inputFile}'
+        hashing(n, inputFile)
+    else:
+        print("Introduzca un valor n entero múltiplo de 4 y (16 <= n <= 64)")
 
 #Pruebas de ejecución
-hashing(16,'scripts/test1.txt')
-#main()
+#hashing(16,'scripts/test1.txt')
+main()
 #print(hash("opengenus"))

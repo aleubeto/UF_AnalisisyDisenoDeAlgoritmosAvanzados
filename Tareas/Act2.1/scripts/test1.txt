@@ -1,8 +1,8 @@
 hola mundo
-esto es un mensaje que será "hasheado"
+esto es un mensaje que sera "hasheado"
 porque es ultrasecreto
 
 Atte:
-    Juán Ferrer
+    Juan Ferrer
     Alejandro Ubeto
     Maximiliano Romero
