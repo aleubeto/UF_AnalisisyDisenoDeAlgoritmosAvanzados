@@ -21,4 +21,41 @@ def hash(s) :
         pod = (pod * p) % m
     return haash
 
-print(hash("opengenus"))
+#Función de Hashing
+def hashing(n, inputFile):
+    #1:Procesamiento de contenido de archivo (incluye espacios y saltos de línea)
+    charlist = []
+    with open(inputFile) as file:
+        for line in file:
+            for char in list(line):
+                charlist.append(char)
+
+    #2:Creación de tabla de n columnas
+    array = []
+    while True:
+        if len(charlist) == 0:
+            break
+        elif len(charlist) < n:
+            for i in range(n - len(charlist)):
+                charlist.append(n)
+        array.append(charlist[:n])
+        del charlist[:n]
+
+    for i in range(len(array)):
+        print(len(array[i]),array[i])
+    
+    #3:Creación de lista con sumas verticales
+
+    #4:Conversión de elementos a hexadecimal
+
+#Programa principal
+def main():
+    n = int(input())
+    inputFile = input('Act2.1/scripts/')
+    inputFile = f'scripts/{inputFile}'
+    hashing(n, inputFile)
+
+#Pruebas de ejecución
+hashing(16,'scripts/test1.txt')
+#main()
+#print(hash("opengenus"))

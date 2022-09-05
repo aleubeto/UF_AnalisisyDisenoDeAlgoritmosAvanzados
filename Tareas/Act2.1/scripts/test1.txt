@@ -1,0 +1,8 @@
+hola mundo
+esto es un mensaje que será "hasheado"
+porque es ultrasecreto
+
+Atte:
+    Juán Ferrer
+    Alejandro Ubeto
+    Maximiliano Romero
