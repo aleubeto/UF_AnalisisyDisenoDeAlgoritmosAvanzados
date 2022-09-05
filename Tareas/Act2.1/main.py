@@ -22,13 +22,14 @@ def hash(s) :
     return haash
 
 #Función de Hashing
+
 def hashing(n, inputFile):
     #1:Procesamiento de contenido de archivo (incluye espacios y saltos de línea)
     charlist = []
     with open(inputFile) as file:
         for line in file:
             for char in list(line):
-                charlist.append(char)
+                charlist.append(ord(char))
 
     #2:Creación de tabla de n columnas
     array = []
@@ -41,12 +42,14 @@ def hashing(n, inputFile):
         array.append(charlist[:n])
         del charlist[:n]
 
-    for i in range(len(array)):
-        print(len(array[i]),array[i])
+    #for i in range(len(array)):
+    #    print(len(array[i]),array[i])
     
     #3:Creación de lista con sumas verticales
+    col_sum = [hex(sum(i)%256) for i in zip(*array)]
 
     #4:Conversión de elementos a hexadecimal
+
 
 #Programa principal
 def main():
