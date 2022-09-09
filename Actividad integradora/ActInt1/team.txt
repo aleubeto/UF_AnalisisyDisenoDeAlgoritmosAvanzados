@@ -1,0 +1,13 @@
+Maximiliano Romero Budib           A01732008
+> Trabajo en las funciones de la parte 1:
+     - KMPSearch()
+     - computeLPSArray()
+
+Alejandro Alfonso Ubeto Yañez      A01734977
+> Trabajó en las funciones de la parte 2:
+     - output2()
+
+Juan Carlos Ferrer Echeverría      A01734794
+> Trabajó en las funciones de la parte 3:
+     - substrings()
+     - compare()
