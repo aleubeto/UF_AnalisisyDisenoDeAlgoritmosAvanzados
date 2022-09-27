@@ -59,11 +59,13 @@ def main():
         
     # Búsqueda de las palabras de la list_m en el trie_n
     for i in list_m:
-        print(trie_n.search(list_m))
+        print(trie_n.search(i))
         
-    
 main()
 
+def testCase(case,caseList):
+  for i in caseList:
+    print(case.search(i))
 
 # Caso de prueba 1
 case1 = Trie()
@@ -94,6 +96,8 @@ case4.insert("juan")
 case4.insert("maximiliano")
 case4_list = ["ale", "ferrer", "max"]
 
-
-
-
+# Ejecución de casos de prueba
+#print(testCase(case1,case1_list))
+#print(testCase(case2,case2_list))
+#print(testCase(case3,case3_list))
+#print(testCase(case4,case4_list))
