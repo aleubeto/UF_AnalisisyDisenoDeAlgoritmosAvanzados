@@ -15,6 +15,7 @@ class Trie:
   def __init__(self):
     self.root = Node()
 
+  #Complejidad lineal O(n)
   def insert(self, word: str) -> None:
     #Empezamos a recorrer desde Root
     cur = self.root
@@ -27,6 +28,7 @@ class Trie:
     #Al acabar el ciclo, llegamos al último caracter, lo marcamos como end=True
     cur.end = True
   
+  #Complejidad lineal O(n)
   def search(self, word: str) -> bool:
     #Empezamos a recorrer desde Root
     cur = self.root
