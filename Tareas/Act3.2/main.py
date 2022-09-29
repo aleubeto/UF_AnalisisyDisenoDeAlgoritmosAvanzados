@@ -1,6 +1,3 @@
-# Python program for Dijkstra's single
-# source shortest path algorithm. The program is
-# for adjacency matrix representation of the graph
 class Graph():
  
     def __init__(self, vertices):
@@ -12,27 +9,18 @@ class Graph():
         for node in range(self.V):
             if src == node: continue
             print("node ", src + 1," to node ", node + 1, ": ", dist[node])
- 
-    # A utility function to find the vertex with
-    # minimum distance value, from the set of vertices
-    # not yet included in shortest path tree
+
     def minDistance(self, dist, sptSet):
- 
-        # Initialize minimum distance for next node
+
         min = 1e7
  
-        # Search not nearest vertex not in the
-        # shortest path tree
         for v in range(self.V):
             if dist[v] < min and sptSet[v] == False:
                 min = dist[v]
                 min_index = v
  
         return min_index
- 
-    # Function that implements Dijkstra's single source
-    # shortest path algorithm for a graph represented
-    # using adjacency matrix representation
+
     def dijkstra(self, src):
  
         dist = [1e7] * self.V
@@ -40,20 +28,11 @@ class Graph():
         sptSet = [False] * self.V
  
         for cout in range(self.V):
- 
-            # Pick the minimum distance vertex from
-            # the set of vertices not yet processed.
-            # u is always equal to src in first iteration
+
             u = self.minDistance(dist, sptSet)
- 
-            # Put the minimum distance vertex in the
-            # shortest path tree
+
             sptSet[u] = True
- 
-            # Update dist value of the adjacent vertices
-            # of the picked vertex only if the current
-            # distance is greater than new distance and
-            # the vertex in not in the shortest path tree
+
             for v in range(self.V):
                 if (self.graph[u][v] > 0 and
                    sptSet[v] == False and
@@ -62,10 +41,72 @@ class Graph():
  
         self.printSolution(src, dist)
  
-# Driver program
+ 
+def floydWarshall(graph):
+    """ dist[][] will be the output
+       matrix that will finally
+        have the shortest distances
+        between every pair of vertices """
+    """ initializing the solution matrix
+    same as input graph matrix
+    OR we can say that the initial
+    values of shortest distances
+    are based on shortest paths considering no
+    intermediate vertices """
+ 
+    dist = list(map(lambda i: list(map(lambda j: j, i)), graph))
+ 
+    """ Add all vertices one by one
+    to the set of intermediate
+     vertices.
+     ---> Before start of an iteration,
+     we have shortest distances
+     between all pairs of vertices
+     such that the shortest
+     distances consider only the
+     vertices in the set
+    {0, 1, 2, .. k-1} as intermediate vertices.
+      ----> After the end of a
+      iteration, vertex no. k is
+     added to the set of intermediate
+     vertices and the
+    set becomes {0, 1, 2, .. k}
+    """
+    for k in range(tamano):
+ 
+        # pick all vertices as source one by one
+        for i in range(tamano):
+ 
+            # Pick all vertices as destination for the
+            # above picked source
+            for j in range(tamano):
+ 
+                # If vertex k is on the shortest path from
+                # i to j, then update the value of dist[i][j]
+                dist[i][j] = min(dist[i][j],
+                                 dist[i][k] + dist[k][j]
+                                 )
+    printSolution(dist)
+ 
+ 
+# A utility function to print the solution
+def printSolution(dist):
+    print("Following matrix shows the shortest distances\
+ between every pair of vertices")
+    for i in range(tamano):
+        for j in range(tamano):
+            if(dist[i][j] == INF):
+                print("%7s" % ("-1"), end=" ")
+            else:
+                print("%7d\t" % (dist[i][j]), end=' ')
+            if j == tamano-1:
+                print()
+ 
 
 tamano = int(input())
 a = []
+INF = 99999
+
 
 for c in range(0, tamano):
     x = input()
@@ -77,12 +118,15 @@ for c in range(0, tamano):
 g = Graph(tamano)
 g.graph = a
 
-#0 2 -1 3
-#-1 0 1 5
-#2 3 0 -1
-#3 -1 4 0
 for i in range(0, tamano):
     g.dijkstra(i)
+
+for i in range(0, tamano):
+    for j in range(0, tamano):
+        if a[i][j] == -1:
+            a[i][j] = INF
+
+floydWarshall(a)
 
  
 # This code is contributed by Divyanshu Mehta
