@@ -117,7 +117,17 @@ def testcase(n, arco):
                 
     floydWarshall(arco, n)
     
+    
+print("\nCaso de prueba 1")    
 testcase(4, [[0,2,-1,3],[-1,0,1,5],[2,3,0,-1],[3,-1,4,0]])
     
+print("\nCaso de prueba 2")
+testcase(5, [[0,4,8,-1,-1],[4,0,1,2,-1],[8,-1,0,4,2],[-1,2,4,0,7],[-1,-1,2,7,0]])
+
+print("\nCaso de prueba 3")    
+testcase(5, [[0,4,5,-1,-1],[4,0,-1,1,-1],[5,-1,0,3,6],[-1,1,-1,0,2],[-1,-1,6,2,0]])
+
+print("\nCaso de prueba 4")    
+testcase(4, [[0,3,4,-1],[-1,0,-1,5],[-1,-1,0,3],[8,-1,-1,0]])
     
 
