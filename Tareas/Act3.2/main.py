@@ -1,3 +1,9 @@
+# Juan Carlos Ferrer Echeverría A01734794
+# Alejandro Alfonso Ubeto Yañez A01734977
+# Maximiliano Romero Budib      A01732008
+
+INF = 99999
+
 class Graph():
  
     def __init__(self, vertices):
@@ -42,7 +48,7 @@ class Graph():
         self.printSolution(src, dist)
  
  
-def floydWarshall(graph):
+def floydWarshall(graph, tamano):
  
     dist = list(map(lambda i: list(map(lambda j: j, i)), graph))
     for k in range(tamano):
@@ -57,11 +63,11 @@ def floydWarshall(graph):
                 # If vertex k is on the shortest path from
                 # i to j, then update the value of dist[i][j]
                 dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
-    printSolution(dist)
+    printSolution(dist, tamano)
  
  
 # A utility function to print the solution
-def printSolution(dist):
+def printSolution(dist, tamano):
     for i in range(tamano):
         for j in range(tamano):
             if(dist[i][j] == INF):
@@ -72,30 +78,46 @@ def printSolution(dist):
                 print()
  
 
-tamano = int(input())
-a = []
-INF = 99999
-
-
-for c in range(0, tamano):
-    x = input()
-    x = x.split(" ")
-    for i in range(0, len(x)):
-        x[i] = int(x[i])
-    a.append(x)
+def main():
+    tamano = int(input())
+    a = []
     
-g = Graph(tamano)
-g.graph = a
 
-for i in range(0, tamano):
-    g.dijkstra(i)
+    for c in range(0, tamano):
+        x = input()
+        x = x.split(" ")
+        for i in range(0, len(x)):
+            x[i] = int(x[i])
+        a.append(x)
+        
+    g = Graph(tamano)
+    g.graph = a
 
-for i in range(0, tamano):
-    for j in range(0, tamano):
-        if a[i][j] == -1:
-            a[i][j] = INF
+    for i in range(0, tamano):
+        g.dijkstra(i)
 
-floydWarshall(a)
+    for i in range(0, tamano):
+        for j in range(0, tamano):
+            if a[i][j] == -1:
+                a[i][j] = INF
 
- 
-# This code is contributed by Divyanshu Mehta
+    floydWarshall(a, tamano)
+    
+def testcase(n, arco):
+    g = Graph(n)
+    g.graph = arco
+    
+    for i in range(0,n):
+        g.dijkstra(i)
+        
+    for i in range(0,n):
+        for j in range(0,n):
+            if arco[i][j] == -1:
+                arco[i][j] = INF
+                
+    floydWarshall(arco, n)
+    
+testcase(4, [[0,2,-1,3],[-1,0,1,5],[2,3,0,-1],[3,-1,4,0]])
+    
+    
+
