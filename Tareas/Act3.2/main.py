@@ -11,12 +11,12 @@ class Graph():
         self.graph = [[0 for column in range(vertices)]
                       for row in range(vertices)]
  
-    def printSolution(self, src, dist):
+    def printSolution(self, src, dist): #O(n) 
         for node in range(self.V):
             if src == node: continue
             print("node ", src + 1," to node ", node + 1, ": ", dist[node])
 
-    def minDistance(self, dist, sptSet):
+    def minDistance(self, dist, sptSet): #O(n)
 
         min = 1e7
  
@@ -27,7 +27,7 @@ class Graph():
  
         return min_index
 
-    def dijkstra(self, src):
+    def dijkstra(self, src): # O(n**2)
  
         dist = [1e7] * self.V
         dist[src] = 0
@@ -48,7 +48,7 @@ class Graph():
         self.printSolution(src, dist)
  
  
-def floydWarshall(graph, tamano):
+def floydWarshall(graph, tamano):   # O(n**3)
  
     dist = list(map(lambda i: list(map(lambda j: j, i)), graph))
     for k in range(tamano):
@@ -67,7 +67,7 @@ def floydWarshall(graph, tamano):
  
  
 # A utility function to print the solution
-def printSolution(dist, tamano):
+def printSolution(dist, tamano): # O(n**2)
     for i in range(tamano):
         for j in range(tamano):
             if(dist[i][j] == INF):
@@ -78,7 +78,7 @@ def printSolution(dist, tamano):
                 print()
  
 
-def main():
+def main(): # O(n)
     tamano = int(input())
     a = []
     
@@ -103,7 +103,7 @@ def main():
 
     floydWarshall(a, tamano)
     
-def testcase(n, arco):
+def testcase(n, arco):  # O(n)
     g = Graph(n)
     g.graph = arco
     
