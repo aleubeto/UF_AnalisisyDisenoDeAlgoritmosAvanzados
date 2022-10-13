@@ -1,0 +1,11 @@
+Para correr el main.js seguir las siguientes instrucciones:
+
+1.- Con la carpeta de la actividad abierta, en la terminal correr el comando:
+
+                          tsc main.ts
+
+2.- Posteriormente, en la terminal correr el siguiente comando:
+
+                          node main.js
+
+De esta forma se ejecuta y compila el archivo javascipt
