@@ -16,12 +16,11 @@ def lines():
 # Función que retorna la orientación de 3 puntos
 def orientation(a,b,c):
 
-    sigma = (b[1]-a[1])/(b[0]-a[0]) # pendiente de a-b
-    tau = (c[1]-b[1])/(c[0]-b[0])   # pendiente de b-c
+    expression = (b[1]-a[1]) * (c[0]-b[0]) - (c[1]-b[1]) * (b[0]-a[0])
 
-    if sigma < tau:
+    if expression < 0:
         return 'counterclockwise'
-    elif sigma > tau:
+    elif expression > 0:
         return 'clockwise'
     else:
         return 'collinear'
@@ -41,8 +40,8 @@ def intersection(lines):
     
     # Condiciones
     generalCase = o1 != o2 and o3 != o4
-    specialCase = False
-    return xor(generalCase,specialCase)
+    # specialCase = False / No se implementa
+    return generalCase
 
 
 # Función de programa principal
@@ -74,11 +73,23 @@ def testCase(matrix):
 main()
 
 # Ejecución de casos de prueba
-tc1 = [[],[],[],[]]
-tc2 = [[],[],[],[]]
-tc3 = [[],[],[],[]]
-tc4 = [[],[],[],[]]
-# print(testCase(tc1))
-# print(testCase(tc1))
-# print(testCase(tc1))
-# print(testCase(tc1))
+tc1 =  [[-2,-1,2,2,1,-2,-1,2],
+        [-2,-2,2,4,2,-2,0,4],
+        [-2,0,0,4,2,0,-2,2],
+        [2,-4,0,0,-4,2,-2,-4]]
+tc2 =  [[10,10,30,40,30,20,10,40],
+        [-4,4,0,0,2,2,0,6],
+        [10,40,40,30,30,20,10,50],
+        [2,2,12,4,10,2,2,8]]
+tc3 =  [[5,-5,10,4,10,-6,5,5],
+        [-2,-2,-2,6,-4,8,-4,2],
+        [5,-10,0,5,5,0,-5,-5],
+        [4,-4,0,0,5,0,-2,-4]]
+tc4 =  [[-2,2,2,6,0,10,-4,6],
+        [6,-8,8,2,8,-4,-2,2],
+        [-4,-4,0,0,2,4,0,6],
+        [-4,-2,0,15,4,4,-4,6]]
+#print(testCase(tc1))
+#print(testCase(tc2))
+#print(testCase(tc3))
+#print(testCase(tc4))
