@@ -10,9 +10,28 @@ def lines():
         pair[i] = float(pair[i])
     return pair[:8] #Retornamos los primeros 8 elementos
 
+# Función que retorna la orientación de 3 puntos
+def orientation(a,b,c):
+
+    sigma = (b[1]-a[1])/(b[0]-a[0]) # pendiente de a-b
+    tau = (c[1]-b[1])/(c[0]-b[0])   # pendiente de b-c
+
+    if sigma < tau:
+        return 'counterclockwise'
+    elif sigma > tau:
+        return 'clockwise'
+    else:
+        return 'collinear'
+
 # Función booleana que retorna si en 2 rectas hay intersección
 def intersection(lines):
-    return True
+
+    # Definición de puntos
+    p1,q1 = (lines[0],lines[1]),(lines[2],lines[3])
+    p2,q2 = (lines[4],lines[5]),(lines[6],lines[7])
+
+    #
+
 
 # Función de programa principal
 def main():
