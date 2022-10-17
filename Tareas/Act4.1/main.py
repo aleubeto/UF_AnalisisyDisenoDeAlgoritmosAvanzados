@@ -6,11 +6,13 @@
 # Función que recibe una lista de 4 puntos/coordenadas
 def lines():
     pair = input().split()
+    for i in range(len(pair)):
+        pair[i] = float(pair[i])
     return pair[:8] #Retornamos los primeros 8 elementos
 
 # Función booleana que retorna si en 2 rectas hay intersección
 def intersection(lines):
-    return True # A CURRAR!!!
+    return True
 
 # Función de programa principal
 def main():
