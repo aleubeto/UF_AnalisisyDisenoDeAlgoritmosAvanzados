@@ -3,6 +3,9 @@
 # Maximiliano Romero Budib      A01732008
 
 
+# Importar operador Exclusive Or
+from operator import xor
+
 # Función que recibe una lista de 4 puntos/coordenadas
 def lines():
     pair = input().split()
@@ -30,7 +33,10 @@ def intersection(lines):
     p1,q1 = (lines[0],lines[1]),(lines[2],lines[3])
     p2,q2 = (lines[4],lines[5]),(lines[6],lines[7])
 
-    #
+    # Condiciones
+    generalCase = orientation(p1,q1,p2) != orientation(p1,q1,q2) and orientation(p2,q2,p1) != orientation(p2,q2,q1)
+    specialCase = False
+    return xor(generalCase,specialCase)
 
 
 # Función de programa principal
