@@ -1,3 +1,7 @@
+# Juan Carlos Ferrer Echeverría A01734794
+# Alejandro Alfonso Ubeto Yañez A01734977
+# Maximiliano Romero Budib      A01732008
+
 INF = 99999
 
 import sys  
@@ -128,7 +132,7 @@ def printSolution(dist, tamano): # O(n**2)
                 print()
 
 # Función para encontrar el punto más cercano a una central
-def closestCentral(c,u):
+def closestCentral(c,u):    # O(n)
     distancias = {}
     for i in c:
         distancias[f'({i[0]},{i[1]})'] = math.sqrt((i[0]-u[0])**2 + (i[1]-u[1])**2)
