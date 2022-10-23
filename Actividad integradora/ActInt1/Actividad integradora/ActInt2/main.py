@@ -1,8 +1,8 @@
 INF = 99999
 
 import sys  
- 
- 
+import math
+
 class Grapho():
  
     def __init__(self, vertices):
@@ -64,7 +64,7 @@ class Graph():
         for node in range(self.V):
             if src == node: continue
             if node + 1 < src + 1 : continue
-            print("node ", src + 1," to node ", node + 1, ": ", dist[node])
+            print("node", src + 1,"to node", node + 1, "=", dist[node])
 
     def minDistance(self, dist, sptSet): #O(n)
 
@@ -128,9 +128,14 @@ def printSolution(dist, tamano): # O(n**2)
                 print()
 
 # Función para encontrar el punto más cercano a una central
-# def closestCentral():
-    #
+def closestCentral(c,u):
+    distancias = {}
+    for i in c:
+        distancias[f'({i[0]},{i[1]})'] = math.sqrt((i[0]-u[0])**2 + (i[1]-u[1])**2)
+    minimo = min(distancias, key=distancias.get)
+    return f'({u[1]},{u[1]}) to {minimo} = {distancias[minimo]}'  #Retorna la distancia mínima
 
+# Función principal
 def main(): # O(n)
     print('\nActividad Integradora 2')
     tamano = int(input())
@@ -153,10 +158,14 @@ def main(): # O(n)
         b.append(y)
     for i in range(0, tamano):  # 3.-Matriz de ubicación en un plano coordenado de las centrales
         center = input()
-        center = center[1:]
-        center = center[:-1]
-        center = center.split(",")
-        centers.append(center) 
+        center = center[1:-1].split(",")
+        for j in range(len(center)):
+            center[j] = int(center[j])
+        centers.append(center)
+    ubicacion = input('Nueva ubicación: ') # 4.-Coordenadas de nueva ubicación
+    ubicacion = ubicacion[1:-1].split(",")
+    for i in range(len(ubicacion)):
+        ubicacion[i] = int(ubicacion[i])
 
     # Creación de grafos
     g = Graph(tamano)
@@ -177,8 +186,11 @@ def main(): # O(n)
     
     # Output 3
     m.primMST()
+
+    #Output 4
+    print(closestCentral(centers,ubicacion))
     
-def testcase(n, arco1, arco2):  # O(n)
+def testcase(n, arco1, arco2, centros, ubicacion):  # O(n)
 
     # Creación de grafos
     g = Graph(n)
@@ -200,9 +212,18 @@ def testcase(n, arco1, arco2):  # O(n)
     
     #Output 3
     m.primMST()
-    
 
-main()    
+    #Output 4
+    print(closestCentral(centros,ubicacion))
+    
+# Ejecución de programa principal
+#main()
+
+# Ejecución de caso de prueba
 print("\nCaso de prueba 1")    
-testcase(4, [[0,16,45,32],[16,0,18,21],[45,18,0,7],[32,21,7,0]], [[0,48,12,18],[52,0,42,32],[18,46,0,56],[24,36,52,0]])
+testcase(4,
+    [[0,16,45,32],[16,0,18,21],[45,18,0,7],[32,21,7,0]],
+    [[0,48,12,18],[52,0,42,32],[18,46,0,56],[24,36,52,0]],
+    [[200,500],[300,100],[450,150],[520,480]],
+    [100,100])
     
