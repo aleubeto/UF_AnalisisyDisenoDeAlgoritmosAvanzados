@@ -126,52 +126,83 @@ def printSolution(dist, tamano): # O(n**2)
                 print(dist[i][j], end=' ')
             if j == tamano-1:
                 print()
- 
+
+# Función para encontrar el punto más cercano a una central
+# def closestCentral():
+    #
 
 def main(): # O(n)
+    print('\nActividad Integradora 2')
     tamano = int(input())
     a = []
-    
+    b = []
+    centers = []
 
-    for c in range(0, tamano):
+    # Inputs de usuario
+    for c in range(0, tamano):  # 1.-Matriz de adyacencias
         x = input()
         x = x.split(" ")
         for i in range(0, len(x)):
             x[i] = int(x[i])
         a.append(x)
-        
+    for d in range(0, tamano):  # 2.-Matriz de capacidades máximas de flujo de datos
+        y = input()
+        y = y.split(" ")
+        for i in range(0, len(y)):
+            y[i] = int(y[i])
+        b.append(y)
+    for i in range(0, tamano):  # 3.-Matriz de ubicación en un plano coordenado de las centrales
+        center = input()
+        center = center[1:]
+        center = center[:-1]
+        center = center.split(",")
+        centers.append(center) 
+
+    # Creación de grafos
     g = Graph(tamano)
     g.graph = a
+    m = Grapho(tamano)
+    m.graph = b
 
-    for i in range(0, tamano):
-        g.dijkstra(i)
-
+    # Output 1
     for i in range(0, tamano):
         for j in range(0, tamano):
             if a[i][j] == -1:
                 a[i][j] = INF
-
     floydWarshall(a, tamano)
+
+    # Output 2
+    for i in range(0, tamano):
+        g.dijkstra(i)
+    
+    # Output 3
+    m.primMST()
     
 def testcase(n, arco1, arco2):  # O(n)
+
+    # Creación de grafos
     g = Graph(n)
     g.graph = arco1
+    m = Grapho(n)
+    m.graph = arco2
 
     for i in range(0,n):
         for j in range(0,n):
             if arco1[i][j] == -1:
                 arco1[i][j] = INF
-                
+
+    # Output 1
     floydWarshall(arco1, n)
     
+    # Output 2
     for i in range(0,n):
         g.dijkstra(i)
     
-    m = Grapho(n)
-    m.graph = arco2
+    #Output 3
     m.primMST()
     
-    
+
+main()    
 print("\nCaso de prueba 1")    
 testcase(4, [[0,16,45,32],[16,0,18,21],[45,18,0,7],[32,21,7,0]], [[0,48,12,18],[52,0,42,32],[18,46,0,56],[24,36,52,0]])
     
