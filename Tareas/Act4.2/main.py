@@ -17,5 +17,19 @@ def main():
         dots.append(tuple(newDot))
     print(dots)
 
+# Función de casos de prueba
+def testcase(dots):
+    return dots
+
 # Ejecución de programa principal
 main()
+
+# Ejecución de casos de prueba
+tc1 = [(1, 2), (3, 4), (5, 6), (5, 6), (5, 6)]
+tc2 = [(1, 2), (3, 4), (5, 6), (5, 6), (5, 6)]
+tc3 = [(1, 2), (3, 4), (5, 6), (5, 6), (5, 6)]
+tc4 = [(1, 2), (3, 4), (5, 6), (5, 6), (5, 6)]
+#testcase(tc1)
+#testcase(tc2)
+#testcase(tc3)
+#testcase(tc4)
