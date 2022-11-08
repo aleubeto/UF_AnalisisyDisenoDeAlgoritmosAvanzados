@@ -43,14 +43,14 @@ def testcase(n, dots):
     print(bg(n, array))
 
 # Ejecución de programa principal
-main()
+#main()
 
 # Ejecución de casos de prueba
-tc1 = [(2, 3), (12, 30), (40, 50), (5, 1), (12, 10), (3, 4)]
-#testcase(len(tc1), tc1)
-tc2 = [(2, 3), (12, 30), (40, 50), (5, 1), (12, 10), (3, 4)]
-#testcase(len(tc2), tc2)
-tc3 = [(2, 3), (12, 30), (40, 50), (5, 1), (12, 10), (3, 4)]
-#testcase(len(tc3), tc3)
+tc1 = [(2, 3), (12, 36), (40, 50), (5, 1), (12, 10), (3, 4)]
+testcase(len(tc1), tc1)
+tc2 = [(-1, 1), (10, 5), (-10, 5), (6, 7), (1, 2), (100, 0)]
+testcase(len(tc2), tc2)
+tc3 = [(9, 0), (4, 10), (6, 5), (50, 16), (3, 3), (0, 1)]
+testcase(len(tc3), tc3)
 tc4 = [(1, 1), (22, 1), (4, 1), (1, 1), (2, 1)]
-#testcase(len(tc4), tc4)
+testcase(len(tc4), tc4)
