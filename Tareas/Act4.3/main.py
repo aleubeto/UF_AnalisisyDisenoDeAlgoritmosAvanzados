@@ -2,6 +2,8 @@
 # Alejandro Alfonso Ubeto Yañez A01734977
 # Maximiliano Romero Budib      A01732008
 
+import math
+
 class Dot:
     def __init__(self, x = None, y = None):
         self.x = x
@@ -9,7 +11,7 @@ class Dot:
 
 #Función de distancia entre dos puntos
 def distancia(p1, p2):
-    	return (float((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y)))
+    	return round(math.sqrt((p2.x - p1.x)**2 + (p2.y - p1.y)**2),5)
 
 
 def bg(n, dots):
@@ -51,10 +53,17 @@ def testcase(n, dots):
         array.append(Dot(i[0],i[1]))
     #print(array)
     return(bg(n, array))
+
 #main()
 
 tc1 = [(2, 3), (12, 30), (40, 50), (5, 1), (12, 10), (3, 4)]
-#testcase(len(tc1), tc1)
+testcase(len(tc1), tc1)
 
-tc2 = [(1, 1), (22, 1), (4, 1), (1, 1), (2, 1)]
+tc2 = [(2, 3), (12, 30), (40, 50), (5, 1), (12, 10), (3, 4)]
 testcase(len(tc2), tc2)
+
+tc3 = [(2, 3), (12, 30), (40, 50), (5, 1), (12, 10), (3, 4)]
+testcase(len(tc3), tc3)
+
+tc4 = [(1, 1), (22, 1), (4, 1), (1, 1), (2, 1)]
+testcase(len(tc4), tc4)
