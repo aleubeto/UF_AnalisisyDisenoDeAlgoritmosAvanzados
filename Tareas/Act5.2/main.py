@@ -4,7 +4,15 @@
 
 # Función que realiza algortmo de Backtracking con Bitmask
 def backtracking_bitmask(matrix):
-    return matrix   # A trabajar!!!
+    dinamicChart = []
+    for i in range(len(matrix)):
+        temp = []
+        for j in range(100):
+            if j+1 in matrix[i]:
+                temp.append(True)
+            else:
+                temp.append(False)
+        dinamicChart.append(temp)
 
 # Función de programa principal
 def main():
@@ -26,5 +34,13 @@ def main():
     else:
         print('> El número ingresado no cumple con la restricción 1<=n<=10')
 
+# Función de casos de prueba
+def tescase(tc):
+    backtracking_bitmask(tc)
+
 # Ejecución de función de programa principal
-main()
+#main()
+
+# Ejecución de casos de prueba
+tc1 = [[5,100,1],[2],[5,100]]
+tescase(tc1)
