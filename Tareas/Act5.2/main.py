@@ -4,6 +4,24 @@
 
 # Función que realiza algortmo de Backtracking con Bitmask
 def backtracking_bitmask(matrix):
+    permutation = []
+    result = []
+    for i in range(len(matrix[0])):    
+        permutation.append(matrix[0][i])
+        for j in range(1,len(matrix)):
+            for k in range(len(matrix[j])):
+                if matrix[j][k] not in permutation:
+                    permutation.append(matrix[j][k])
+                    if len(permutation) == len(matrix)-1:
+                        result.append(permutation)
+        permutation=[]
+    
+    print(result)
+                    
+        
+        
+        
+    """
     dinamicChart = []
     for i in range(len(matrix)):
         temp = []
@@ -13,6 +31,7 @@ def backtracking_bitmask(matrix):
             else:
                 temp.append(False)
         dinamicChart.append(temp)
+    """
 
 # Función de programa principal
 def main():
@@ -29,18 +48,19 @@ def main():
             people.append(colection)
 
         # Backtracking con Bitmask
-        backtracking_bitmask(people)
+        return(backtracking_bitmask(people))
 
     else:
         print('> El número ingresado no cumple con la restricción 1<=n<=10')
+    print(people)
 
 # Función de casos de prueba
 def tescase(tc):
     backtracking_bitmask(tc)
 
 # Ejecución de función de programa principal
-#main()
+main()
 
 # Ejecución de casos de prueba
 tc1 = [[5,100,1],[2],[5,100]]
-tescase(tc1)
+#tescase(tc1)
