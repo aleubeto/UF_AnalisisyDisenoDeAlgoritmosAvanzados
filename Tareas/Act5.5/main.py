@@ -37,8 +37,6 @@ def a_star(maze):
     # Loop until you find the end
     while len(open_list) > 0:
 
-        print(f'open list = {len(open_list)}')
-
         # Get the current node
         current_node = open_list[0]
         current_index = 0
@@ -115,7 +113,6 @@ def main():
     # n Inputs del usuario
     for i in range(n):
         matrix.append(lines())
-    
     path = a_star(matrix)
     if path == None:
         print("None")
@@ -168,15 +165,11 @@ def tc(matrix):
 main()
 
 # Ejecución de casos de prueba
-tc1 =  [[1,0,0,0],
-        [1,1,0,1],
-        [1,1,0,0],
-        [0,1,1,1]]
-#tc(tc1)
-tc2 = [[1,1,0,0,0], [0,1,1,0,0],
-                    [0,1,1,1,0],[0,1,1,1]]
-#tc(tc2)
-tc3 = [[1,0,0,0],[1,1,0,1],[1,1,0,0],[0,1,1,1]]
-#tc(tc3)
-tc4 = [[1,0,0,0],[1,1,0,1],[1,1,0,0],[0,1,1,1]]
-#tc(tc4)
+tc1 = [[1,0,0,0],[1,1,0,1],[1,1,0,0],[0,1,1,1]]
+tc(tc1)
+tc2 = [[1,1,0,0,0],[0,1,1,0,0],[0,1,1,1,0],[0,0,1,1,1]]
+tc(tc2)
+tc3 = [ [1,1,1,1,1],[1,0,0,0,1],[1,1,1,0,1],[0,1,1,1,1],[0,0,1,0,1]]
+tc(tc3)
+tc4 = [ [1,0,1,1],[1,1,1,1],[1,0,0,1],[1,1,1,1]]
+tc(tc4)
