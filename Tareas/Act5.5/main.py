@@ -37,6 +37,8 @@ def a_star(maze):
     # Loop until you find the end
     while len(open_list) > 0:
 
+        print(f'open list = {len(open_list)}')
+
         # Get the current node
         current_node = open_list[0]
         current_index = 0
@@ -61,7 +63,6 @@ def a_star(maze):
         # Generate children
         children = []
         for new_position in [(0, -1), (0, 1), (-1, 0), (1, 0), (-1, -1), (-1, 1), (1, -1), (1, 1)]: # Adjacent squares
-
             # Get node position
             node_position = (current_node.position[0] + new_position[0], current_node.position[1] + new_position[1])
 
@@ -70,7 +71,7 @@ def a_star(maze):
                 continue
 
             # Make sure walkable terrain
-            if maze[node_position[0]][node_position[1]] != 0:
+            if maze[node_position[0]][node_position[1]] != 1:
                 continue
 
             # Create new node
@@ -125,14 +126,15 @@ def tc(matrix):
     print(a_star(matrix))
 
 # Ejecución de programa principal
-main()
+#main()
 
 # Ejecución de casos de prueba
 tc1 = [[1,0,0,0],[1,1,0,1],[1,1,0,0],[0,1,1,1]]
 tc(tc1)
-tc2 = [[1,0,0,0],[1,1,0,1],[1,1,0,0],[0,1,1,1]]
-tc(tc2)
+tc2 = [[1,1,0,0,0], [0,1,1,0,0],
+                    [0,1,1,1,0],[0,1,1,1]]
+#tc(tc2)
 tc3 = [[1,0,0,0],[1,1,0,1],[1,1,0,0],[0,1,1,1]]
-tc(tc3)
+#tc(tc3)
 tc4 = [[1,0,0,0],[1,1,0,1],[1,1,0,0],[0,1,1,1]]
-tc(tc4)
+#tc(tc4)
