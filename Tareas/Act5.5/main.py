@@ -62,7 +62,7 @@ def a_star(maze):
 
         # Generate children
         children = []
-        for new_position in [(0, -1), (0, 1), (-1, 0), (1, 0), (-1, -1), (-1, 1), (1, -1), (1, 1)]: # Adjacent squares
+        for new_position in [(0, -1), (0, 1), (-1, 0), (1, 0)]: # Adjacent squares
             # Get node position
             node_position = (current_node.position[0] + new_position[0], current_node.position[1] + new_position[1])
 
@@ -84,9 +84,8 @@ def a_star(maze):
         for child in children:
 
             # Child is on the closed list
-            for closed_child in closed_list:
-                if child == closed_child:
-                    continue
+            if len([closed_child for closed_child in closed_list if closed_child == child]) > 0:
+                continue
 
             # Create the f, g, and h values
             child.g = current_node.g + 1
@@ -94,12 +93,11 @@ def a_star(maze):
             child.f = child.g + child.h
 
             # Child is already in the open list
-            for open_node in open_list:
-                if child == open_node and child.g > open_node.g:
-                    continue
-
+            if len([open_node for open_node in open_list if child.position == open_node.position and child.g > open_node.g]) > 0:
+                continue
             # Add the child to the open list
             open_list.append(child)
+    return None
 
 # Función que recibe una lista de 4 puntos/coordenadas
 def lines():
@@ -116,21 +114,65 @@ def main():
 
     # n Inputs del usuario
     for i in range(n):
-        print(i)
         matrix.append(lines())
-    print("help")
-    print(a_star(matrix))
+    
+    path = a_star(matrix)
+    if path == None:
+        print("None")
+    else:
+        start = (0,0)
+        answer = ""
+        for i in path:
+            if i == start:
+                continue
+            if i[0] > start[0]:
+                answer += "D"
+                start = i
+            elif i[0] < start[0]:
+                answer += "U"
+                start = i
+            elif i[1] > start[1]:
+                answer += "R"
+                start = i
+            elif i[1] < start[1]:
+                answer += "L"
+                start = i
+        print(answer)
 
 # Función de casos de prueba
 def tc(matrix):
-    print(a_star(matrix))
+    path = a_star(matrix)
+    if path == None:
+        print("None")
+    else:
+        start = (0,0)
+        answer = ""
+        for i in path:
+            if i == start:
+                continue
+            if i[0] > start[0]:
+                answer += "D"
+                start = i
+            elif i[0] < start[0]:
+                answer += "U"
+                start = i
+            elif i[1] > start[1]:
+                answer += "R"
+                start = i
+            elif i[1] < start[1]:
+                answer += "L"
+                start = i
+        print(answer)
 
 # Ejecución de programa principal
-#main()
+main()
 
 # Ejecución de casos de prueba
-tc1 = [[1,0,0,0],[1,1,0,1],[1,1,0,0],[0,1,1,1]]
-tc(tc1)
+tc1 =  [[1,0,0,0],
+        [1,1,0,1],
+        [1,1,0,0],
+        [0,1,1,1]]
+#tc(tc1)
 tc2 = [[1,1,0,0,0], [0,1,1,0,0],
                     [0,1,1,1,0],[0,1,1,1]]
 #tc(tc2)
