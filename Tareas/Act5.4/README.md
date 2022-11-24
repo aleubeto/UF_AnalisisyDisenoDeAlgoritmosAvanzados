@@ -1,3 +1,8 @@
+# Actividad 5.4 Implementación encontrarse en el medio (meet in the middle)
+
+### Poner en práctica la implementación del algoritmo de *"meet in the middle"*
+
+
 Utilizando la técnica de programación de **backtracking**, construye un programa que implemente el algoritmo encontrarse en el medio **(meet in the middle)**.
 
 En el problema *Meet in the middle*, dado un conjunto de `n` enteros donde `n<=40`, donde cada uno de ellos es a lo mas `10**12`, determina el subconjunto con la suma máxima cuya suma es menor o igual que `S`, donde `S<=10**18`.
