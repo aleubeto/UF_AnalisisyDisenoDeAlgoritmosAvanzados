@@ -10,6 +10,8 @@ def lines(n):
     elements = input('set = ').split(',')
     for i in range(len(elements)):
         elements[i] = int(elements[i])
+    if len(elements)<n:
+        elements += [0]*(n-len(elements))
     return elements[:n] #Retornamos los primeros n elementos
 
 # Función que calcula la suma de los subconjuntos posibles en un conjunto
@@ -24,7 +26,7 @@ def sumSubarray(set, n, index):
     return subsets
 
 # Función que implementa algoritmo "meet in the middle"
-def meet_in_middle(set,s):
+def meet_in_middle(set,s):  # O(2**(n/2) * n)
     half1 = sumSubarray(set,len(set)//2,0)
     half2 = sumSubarray(set,len(set)-len(set)//2,len(set)//2)
     half2.sort()    # Ordenamiento de segunda mitad
@@ -41,20 +43,35 @@ def meet_in_middle(set,s):
 
 # Función que ejecuta programa principal
 def main():
+
+    # Inputs de usuario
     n = int(input('n = '))
     set = lines(n)
     s = int(input('s = '))
-    print(meet_in_middle(set,s))
+
+    # Restricciones
+    restriction1 = n<=40
+    restriction2 = True
+    for i in set:
+        if i>=10**12:
+            restriction2 = False
+    restriction3 = s <=10**18
+
+    # Resultado
+    if restriction1 and restriction2 and restriction3:
+        print(meet_in_middle(set,s))
+    else:
+        print(f'\nError: Debe cumplir las siguientes restricciones:\nn<=40: {restriction1}\nelementos<=10**12: {restriction2}\ns<=10**18: {restriction3}')
 
 # Función que ejecuta casos de prueba
 def tc(set,s):
     print(meet_in_middle(set,s))
 
 # Ejecución de programa principal
-# main()
+main()
 
 # Ejecución de casos de prueba
-tc([45, 34, 4, 12, 5, 2],42)   #tc1
-tc([3, 34, 4, 12, 5, 2],10)   #tc2
-tc([9, 11, 5, 8, 4, 40],17)   #tc3
-tc([1, 3, 2, 10, 6, 20, 22],23)   #tc4
+#tc([45, 34, 4, 12, 5, 2],42)   #tc1
+#tc([3, 34, 4, 12, 5, 2],10)   #tc2
+#tc([9, 11, 5, 8, 4, 40],17)   #tc3
+#tc([1, 3, 2, 10, 6, 20, 22],23)   #tc4
